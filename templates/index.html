@@ -1,19 +1,7 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>FlaskApp</title>
-    <style>
-        .todo {
-            padding: 20px;
-            margin: 10px;
-            background-color: #eee;
-        }
-        .edit-form {
-            display: none;
-        }
-    </style>
-</head>
+{% extends 'base.html' %}
+
+{% block content %}
+<html>
 <body>
     <h1>The Phone</h1>
     <hr>
@@ -43,13 +31,11 @@
         </p>
         <button type="submit">Submit</button>
     </form>
-    {% for degree in ['Bad', 'Not bad but not good', 'Good'] %}
-    <a href="{{ url_for('index', degree=degree) }}">{{ degree }}</a>
-    {% endfor %}
+    <a href="{{ url_for('index', degree='Bad') }}">Bad</a>
+    <a href="{{ url_for('index', degree='Not bad but not good') }}">Not bad but not good</a>
+    <a href="{{ url_for('index', degree='Good') }}">Good</a>
     <hr>
     {% for todo in todos %}
-        {{  }}
-        {{ todo.degree }}
         {% if not degree or todo.degree == degree %}
             <div class="todo">
                 <p>{{ todo['content'] }} <i>({{ todo['degree']}})</i></p>
@@ -88,3 +74,5 @@
     </div>
 </body>
 </html>
+
+{% endblock %}
